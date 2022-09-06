@@ -3,6 +3,7 @@ import City from './City';
 import DailyReport from './DailyReport';
 import Graph from './Graph';
 import WeeklyReport from './WeeklyReport';
+import key from '../key.js';
 
 function Forecast() {
     const { geolocation } = navigator;
@@ -61,7 +62,6 @@ function Forecast() {
         console.log(lat, lon);
         if (lat && lon) {
             try {
-                const key = '<your API key>';
                 const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`;
 
                 const data = await (await fetch(url)).json();
