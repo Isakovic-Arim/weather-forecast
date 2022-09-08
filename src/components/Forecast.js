@@ -61,6 +61,7 @@ function Forecast() {
 
     const getForecast = async () => {
         if (lat && lon) {
+            console.log('getting forecast');
             try {
                 const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`;
 
@@ -78,16 +79,21 @@ function Forecast() {
                 setCurrWindSpeed(windSpeed);
                 setIcon(getIcon(weather));
 
+                setWeek([]); // clear the old data
+                
                 for (let i = 0; i < list.length; i++) {
                     if (i % 7 === 0) {
                         const { temp, humidity } = list[i].main;
                         const weather = list[i].weather[0].main;
                         const icon = getIcon(weather);
-
+                        
                         setWeek(prev => { return [...prev, { icon: icon, weather: weather, humidity: humidity }] });
                         setWeeklyTemp(prev => { return [...prev, temp] });
                     }
                 }
+
+                console.log(city);
+                console.log(week);
 
             } catch (error) {
                 console.error(error);
