@@ -78,7 +78,9 @@ function Forecast() {
                 setCurrWindSpeed(windSpeed);
                 setIcon(getIcon(weather));
 
-                setWeek([]); // clear the old data
+                // clear the old data
+                setWeek([]);
+                setWeeklyTemp([]);
                 
                 for (let i = 0; i < list.length; i++) {
                     if (i % 7 === 0) {
