@@ -61,7 +61,6 @@ function Forecast() {
 
     const getForecast = async () => {
         if (lat && lon) {
-            console.log('getting forecast');
             try {
                 const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`;
 
@@ -91,10 +90,6 @@ function Forecast() {
                         setWeeklyTemp(prev => { return [...prev, temp] });
                     }
                 }
-
-                console.log(city);
-                console.log(week);
-
             } catch (error) {
                 console.error(error);
             }
